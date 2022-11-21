@@ -9,6 +9,12 @@ class Array
         self
     end
 
+    # return_value = [1, 2, 3].my_each do |num|
+    #  puts num
+    # end.my_each do |num|
+    #  puts num
+    # end
+
     def my_select(&prc)
         new_arr = []
         self.my_each do |ele|
@@ -18,19 +24,45 @@ class Array
     end
 
 
-    
+    # a = [1, 2, 3]
+    # p a.my_select { |num| num > 1 } # => [2, 3]
+    # p a.my_select { |num| num == 4 } # => []
 
+
+    def my_reject(&prc)
+        new_arr = []
+        self.my_each do |ele|
+            new_arr << ele if !prc.call(ele)  
+        end
+        new_arr 
+    end
+
+    # a = [1, 2, 3]
+    # p a.my_reject { |num| num > 1 } # => [1]
+    # p a.my_reject { |num| num == 4 } # => [1, 2, 3]
+
+    def my_any?(&prc)
+        self.my_each do |ele|
+            return true if prc.call(ele) == true
+        end
+        false
+    end
+
+    # a = [1, 2, 3]
+    # p a.my_any? { |num| num > 1 } # => true
+    # p a.my_any? { |num| num == 4 } # => false
+
+
+    def my_all?(&prc)
+        self.my_each do |ele|
+            return false if prc.call(ele) == false
+        end
+        true
+    end
+
+    # a = [1, 2, 3]
+    # p a.my_all? { |num| num > 1 } # => false
+    # p a.my_all? { |num| num < 4 } # => true
 
 end
 
-
-# return_value = [1, 2, 3].my_each do |num|
-#  puts num
-# end.my_each do |num|
-#  puts num
-# end
-
-
-a = [1, 2, 3]
-p a.my_select { |num| num > 1 } # => [2, 3]
-p a.my_select { |num| num == 4 } # => []
