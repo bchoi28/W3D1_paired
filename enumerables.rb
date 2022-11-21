@@ -64,9 +64,25 @@ class Array
     # p a.my_all? { |num| num > 1 } # => false
     # p a.my_all? { |num| num < 4 } # => true
 
+<<<<<<< HEAD
     
 
 
+=======
+    def my_flatten
+        arr = []
+        self.each do |ele|
+            if ele.class == Array
+                my_flatten
+            else
+                arr << ele
+            end
+        end
+        arr
+    end
+
+    p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+>>>>>>> refs/remotes/origin/main
 
 end
 
