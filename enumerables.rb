@@ -10,7 +10,7 @@ class Array
         self
     end
 
-    
+
 
 end
 
